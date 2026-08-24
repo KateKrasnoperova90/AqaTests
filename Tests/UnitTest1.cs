@@ -3,7 +3,7 @@
 using System.Text.Json;
 using System.Net.Http.Json;
 
-public class Tests
+public class UnitTest1
 {
     private static HttpClient client;
 
@@ -22,7 +22,7 @@ public class Tests
     {
         using HttpResponseMessage response = await client.GetAsync("users/2");
         response.EnsureSuccessStatusCode();
-    }
+    }   
 
     public async Task Test2()
     {
