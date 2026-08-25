@@ -2,6 +2,8 @@
 
 using System.Text.Json;
 using System.Net.Http.Json;
+using NUnit.Framework;
+using System.Net;
 
 public class UnitTest1
 {
@@ -24,6 +26,7 @@ public class UnitTest1
         response.EnsureSuccessStatusCode();
     }   
 
+    [Test]
     public async Task Test2()
     {
         using HttpResponseMessage response = await client.GetAsync("users/2");
@@ -33,6 +36,7 @@ public class UnitTest1
         UserDataDTO user = userResponse.Data;
     }
 
+    [Test]
     public async Task Test3()
     {
         var newUser = new CreateUserRequestDTO
@@ -48,6 +52,7 @@ public class UnitTest1
     }
 
 
+    [Test]
     public async Task Test4()
     {
         var updatedUser = new CreateUserRequestDTO
@@ -62,10 +67,11 @@ public class UnitTest1
         UpdateUserResponseDTO updatedUserResponse = JsonSerializer.Deserialize<UpdateUserResponseDTO>(jsonPut);
     }
 
+    [Test]
     public async Task Test5()
     {
         using HttpResponseMessage response = await client.DeleteAsync("users/2");
-        response.EnsureSuccessStatusCode();
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
     }
 
     [OneTimeTearDown]

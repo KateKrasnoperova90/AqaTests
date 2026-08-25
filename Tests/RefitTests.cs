@@ -6,6 +6,9 @@ using Refit;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit;
 using System.Net;
+using FluentAssertions;
+using FluentAssertions.Execution;
+
 
 namespace AqaTest.Tests
 {
@@ -32,11 +35,19 @@ namespace AqaTest.Tests
         public async Task TestRefit1()
         {
             var response = await api.GetUserAsync(2);
-            Assert.That(response.Data.Id, Is.EqualTo(2));
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
         [Test]
+
         public async Task TestRefit2()
+        {
+            var response = await api.GetUserAsync(2);
+            response.Content.Data.Id.Should().Be(2);
+        }
+
+        [Test]
+        public async Task TestRefit3()
         {
             var request = new CreateUserRequestDTO
             {
@@ -44,15 +55,36 @@ namespace AqaTest.Tests
                 Job = "Software Enterprise"
             };
             var response = await api.CreateUserAsync(request);
-            Assert.That(response.Name, Is.EqualTo("Kate Krasnoperova"));
+            
+            using (new AssertionScope())
+            {
+                response.Name.Should().Be("Kate Krasnoperova");
+                response.Job.Should().Be("Software Enterprise");
+            }
         }
 
         [Test]
-        public async Task TestRefit3()
+        public async Task TestRefit4()
+        {
+            var request = new CreateUserRequestDTO
+            {
+                Name = "Kate",
+                Job = "Apple"
+            };
+            var response = await api.UpdateUserAsync(2, request);
+            
+            using (new AssertionScope())
+            {
+                response.Name.Should().Be("Kate");
+                response.Job.Should().Be("Apple");
+            }
+        }
+
+        [Test]
+        public async Task TestRefit5()
         {
             var response = await api.DeleteUserAsync(2);
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-            //Assert.That((int)response.StatusCode, Is.EqualTo(204));
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
         }
     }
 }
