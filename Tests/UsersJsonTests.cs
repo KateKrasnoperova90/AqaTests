@@ -93,14 +93,6 @@ public class UsersJsonTests
         const double minLng = 10.5;
         const double maxLng = 24.5;
 
-        // Находим пользователей, чьи координаты выходят за границы Швеции 
-        // var usersOutsideSweden = users.Data.Where(user =>
-        //     user.Profile.Address.Geo.Lat < minLat || user.Profile.Address.Geo.Lat > maxLat ||
-        //     user.Profile.Address.Geo.Lng < minLng || user.Profile.Address.Geo.Lng > maxLng)
-        //     .Select(user => $"{user.Username} (lat: {user.Profile.Address.Geo.Lat}, lng: {user.Profile.Address.Geo.Lng})").ToList();
-
-        // TestContext.WriteLine($"Users outside Sweden: {string.Join(", ", usersOutsideSweden)}");
-
         bool allWithinSweden = users.Data.All(user =>
             user.Profile.Address.Geo.Lat >= minLat && user.Profile.Address.Geo.Lat <= maxLat &&
             user.Profile.Address.Geo.Lng >= minLng && user.Profile.Address.Geo.Lng <= maxLng);
@@ -115,12 +107,6 @@ public class UsersJsonTests
     // .*             — дальше может быть что угодно
     // \d+$           — и строка ЗАКАНЧИВАЕТСЯ на одну или несколько цифр (номер дома)
         var streetPattern = new Regex(@"^[A-Za-zÀ-ÿ].*\d+$");
-
-        // var usersWithInvalidStreet = users.Data
-        //     .Where(user => !streetPattern.IsMatch(user.Profile.Address.Street))
-        //     .Select(user => $"{user.Username} (street: {user.Profile.Address.Street})").ToList();
-
-        // TestContext.WriteLine($"Users with invalid street format: {string.Join(", ", usersWithInvalidStreet)}");
 
         bool allStreetsValid = users.Data.All(user => streetPattern.IsMatch(user.Profile.Address.Street));
         allStreetsValid.Should().BeTrue();
