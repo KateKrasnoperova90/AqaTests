@@ -10,10 +10,13 @@ namespace Interfaces
     public interface IUserApi
     {
         [Get("/users/{id}")]
-        Task<UserResponseDTO> GetUserAsync(int id);
+        Task<ApiResponse<UserResponseDTO>> GetUserAsync(int id);
 
         [Post("/users")]
         Task<CreateUserResponseDTO> CreateUserAsync([Body] CreateUserRequestDTO request);
+
+        [Put("/users/{id}")]
+        Task<UpdateUserResponseDTO> UpdateUserAsync(int id, [Body] CreateUserRequestDTO request);
 
         [Delete("/users/{id}")]
         Task<ApiResponse<string>> DeleteUserAsync(int id);
