@@ -13,6 +13,7 @@ public record OrderItemDTO
 (
     long Id,
     long OrderId,
+    long ProductId,
     long Quantity,
-    decimal UnitPrice
+    double UnitPrice
 );

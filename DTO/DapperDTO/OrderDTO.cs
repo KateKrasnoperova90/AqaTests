@@ -15,5 +15,5 @@ public record OrderDTO
     long UserId,
     string OrderDate,
     string Status,
-    string TotalPrice
+    double TotalPrice
 );

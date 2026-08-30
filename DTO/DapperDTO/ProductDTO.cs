@@ -14,6 +14,7 @@ public record ProductDTO
     long Id,
     string Name,
     string Description,
-    decimal Price,
+    double Price,
+    long Stock,
     long CategoryId
 );
