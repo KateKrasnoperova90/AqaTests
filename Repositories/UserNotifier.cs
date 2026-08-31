@@ -1,0 +1,18 @@
+using AqaTest.Interfaces;
+
+namespace AqaTest.Repositories;
+
+public class UserNotifier
+{
+    private readonly IEmailSender sender;
+
+    public UserNotifier(IEmailSender sender)
+    {
+        this.sender = sender;
+    }
+
+    public void Notify(int userId)
+    {
+        sender.Send("user@mail.com", $"Hello, user {userId}!");
+    }
+}
