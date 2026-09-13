@@ -5,8 +5,10 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 
 namespace AqaTest.Tests
+
 {
     public class UserNotifierTest
+    
     {
         [Test]
         public void TestNotifyViaDI()

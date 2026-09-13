@@ -11,6 +11,7 @@ using AqaTest.Repositories;
 namespace AqaTest.Repositories;
 
 public class ProductRepository : IProductRepository
+
 {
     private readonly string connection;
     public ProductRepository(string connection)

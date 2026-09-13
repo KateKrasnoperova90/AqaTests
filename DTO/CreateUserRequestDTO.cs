@@ -3,6 +3,7 @@ namespace AqaTest;
 using System.Text.Json.Serialization;
 
 public class CreateUserRequestDTO
+
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

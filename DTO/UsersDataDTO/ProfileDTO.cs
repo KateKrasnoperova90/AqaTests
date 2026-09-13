@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.UsersDataDTO;
 
 public record ProfileDTO
+
 (
     [property: JsonPropertyName("fullName")] string FullName,
     [property: JsonPropertyName("age")] int Age,

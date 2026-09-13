@@ -11,8 +11,10 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 
 namespace AqaTest.Tests
+
 {
     public class DapperTest
+    
     {
         private readonly DataBasePreconditions p = new DataBasePreconditions();
         

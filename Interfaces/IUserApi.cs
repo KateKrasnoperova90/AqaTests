@@ -5,9 +5,11 @@ using AqaTest;
 using Refit;
 
 namespace Interfaces
+
 {
     [Headers("x-api-key: free_user_3I0Umsgap4hYjYftWSKlwjRaV6G")]
     public interface IUserApi
+    
     {
         [Get("/users/{id}")]
         Task<ApiResponse<UserResponseDTO>> GetUserAsync(int id);

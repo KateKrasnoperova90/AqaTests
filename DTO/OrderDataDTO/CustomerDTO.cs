@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace AqaTest.DTO.OrderDataDTO;
 public record CustomerDTO
+
 (
     [property: JsonPropertyName("id")] 
     int Id,

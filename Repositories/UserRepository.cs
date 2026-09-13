@@ -11,6 +11,7 @@ using AqaTest.Repositories;
 namespace AqaTest.Repositories;
 
 public class UserRepository : IUserRepository
+
 {
     private readonly string connection;
     public UserRepository(string connection)

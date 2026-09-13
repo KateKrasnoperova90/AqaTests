@@ -11,6 +11,7 @@ using AqaTest.Repositories;
 namespace AqaTest.Repositories;
 
 public class AddressRepository : IAddressRepository
+
 {
     private readonly string connection;
     public AddressRepository(string connection)

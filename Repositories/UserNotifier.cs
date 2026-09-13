@@ -3,6 +3,7 @@ using AqaTest.Interfaces;
 namespace AqaTest.Repositories;
 
 public class UserNotifier
+
 {
     private readonly IEmailSender sender;
 

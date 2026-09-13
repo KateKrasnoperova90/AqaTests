@@ -11,8 +11,10 @@ using FluentAssertions.Execution;
 
 
 namespace AqaTest.Tests
+
 {
     public class RefitTests
+    
     {
         private IUserApi api;
 

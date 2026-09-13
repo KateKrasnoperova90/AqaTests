@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Data.Sqlite;
+
 namespace AqaTest
+
 {
     public static class DatabaseInitializer
     {

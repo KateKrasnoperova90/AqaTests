@@ -11,6 +11,7 @@ using AqaTest.Repositories;
 namespace AqaTest.Repositories;
 
 public class CategoryRepository : ICategoryRepository
+
 {
     private readonly string connection;
     public CategoryRepository(string connection)

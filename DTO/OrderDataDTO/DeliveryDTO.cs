@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.OrderDataDTO;
 
 public record DeliveryDTO
+
 (
     [property: JsonPropertyName("type")] 
     string Type,

@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.DapperDTO;
 
 public record CategoryDTO
+
 (
     long Id,
     string Name

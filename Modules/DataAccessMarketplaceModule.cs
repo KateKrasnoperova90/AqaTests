@@ -9,6 +9,7 @@ using AqaTest.DTO.DapperDTO;
 namespace AqaTest.Modules;
 
 public static class DataAccessMarketplaceModule
+
 {
     public static IServiceCollection AddDataAccessMarketplace(this IServiceCollection services, string connectionString)
     {
