@@ -9,6 +9,7 @@ using AqaTest.Modules;
 namespace AqaTest.Preconditions;
 
 public class DataBasePreconditions
+
 {
     public ServiceProvider Provider { get; }
 

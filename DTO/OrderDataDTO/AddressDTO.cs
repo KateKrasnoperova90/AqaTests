@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.OrderDataDTO;
 
 public record AddressDTO
+
 (
     [property: JsonPropertyName("country")] 
     string Country,

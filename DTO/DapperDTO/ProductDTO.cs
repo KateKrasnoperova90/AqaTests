@@ -10,10 +10,12 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.DapperDTO;
 
 public record ProductDTO
+
 (
     long Id,
     string Name,
     string Description,
-    decimal Price,
+    double Price,
+    long Stock,
     long CategoryId
 );

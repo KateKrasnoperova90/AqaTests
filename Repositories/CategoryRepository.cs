@@ -10,19 +10,19 @@ using AqaTest.Repositories;
 
 namespace AqaTest.Repositories;
 
-public class AddressRepository : IAddressRepository
+public class CategoryRepository : ICategoryRepository
 
 {
     private readonly string connection;
-    public AddressRepository(string connection)
+    public CategoryRepository(string connection)
     {
         this.connection = connection;
     }
 
-    public async Task<AddressDTO> GetAddressByUserIdAsync(int userId)
+    public async Task<IEnumerable<CategoryDTO>> GetCategoryAsync()
     {
         using var bd = new SqliteConnection(connection);
-        var addressByUserId = await bd.QueryFirstOrDefaultAsync<AddressDTO>("SELECT * FROM Addresses WHERE UserId = @userId", new {userId});
-        return addressByUserId;
+        var categories = await bd.QueryAsync<CategoryDTO>("SELECT * FROM Categories");
+        return categories;
     }
 }

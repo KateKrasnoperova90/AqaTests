@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.UsersDataDTO;
 
 public record DataDTO
+
 (
     [property: JsonPropertyName("data")]
     IReadOnlyList<UserDTO> Data

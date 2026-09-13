@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.UsersDataDTO;
 
 public record GeoDTO
+
 (
     [property: JsonPropertyName("lat")] double Lat,
     [property: JsonPropertyName("lng")] double Lng

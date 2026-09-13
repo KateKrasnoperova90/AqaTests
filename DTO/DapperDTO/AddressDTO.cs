@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.DapperDTO;
 
 public record AddressDTO
+
 (
     long Id,
     long UserId,

@@ -7,9 +7,9 @@ using AqaTest.DTO.DapperDTO;
 namespace AqaTest.Interfaces.DapperInterfaces
 
 {
-    public interface IAddressRepository
+    public interface IProductRepository
     
     {
-        Task<AddressDTO> GetAddressByUserIdAsync(int userId);
+        Task<ProductDTO> GetProductByIdAsync(int id);
     }
 }

@@ -10,9 +10,11 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.DapperDTO;
 
 public record OrderItemDTO
+
 (
     long Id,
     long OrderId,
+    long ProductId,
     long Quantity,
-    decimal UnitPrice
+    double UnitPrice
 );

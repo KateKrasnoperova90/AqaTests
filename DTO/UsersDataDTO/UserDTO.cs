@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.UsersDataDTO;
 
 public record UserDTO
+
 (
     [property: JsonPropertyName("id")] int Id,
     [property: JsonPropertyName("username")] string Username,

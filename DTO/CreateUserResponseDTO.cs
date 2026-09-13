@@ -2,6 +2,7 @@ using System;
 using System.Text.Json.Serialization;
 
 public class CreateUserResponseDTO
+
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

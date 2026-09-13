@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.UsersDataDTO;
 
 public record AddressUserDTO
+
 (
     [property: JsonPropertyName("city")]
     string City,

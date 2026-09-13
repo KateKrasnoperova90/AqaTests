@@ -10,10 +10,11 @@ using System.Text.Json.Serialization;
 namespace AqaTest.DTO.DapperDTO;
 
 public record OrderDTO
+
 (
     long Id,
     long UserId,
     string OrderDate,
     string Status,
-    string TotalPrice
+    double TotalPrice
 );
