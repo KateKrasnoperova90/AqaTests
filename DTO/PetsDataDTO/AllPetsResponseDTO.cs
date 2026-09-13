@@ -7,6 +7,5 @@ namespace AqaTest.DTO.PetsDataDTO;
 public record AllPetsResponseDTO
 
 (
-    [property: JsonPropertyName("data")]
     List<PetsDTO> Data
 );
