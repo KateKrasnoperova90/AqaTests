@@ -12,9 +12,26 @@ namespace Interfaces
     
     {
         [Post("/Account/v1/User")]
-        Task<UserBookResponseDTO> CreateUserAsync([Body] UserCreateBodyDTO user);
+        Task<UserBookResponseDTO> CreateUserAsync([Body] UserBodyDTO user);
 
         [Post("/Account/v1/GenerateToken")]
-        Task<TokenResponseDTO> GetUserTokenAsync([Body] UserCreateBodyDTO user);
+        Task<TokenResponseDTO> GetUserTokenAsync([Body] UserBodyDTO user);
+
+        [Post("/Account/v1/Login")]
+        Task<LoginUserResponseDTO> GetUserIdAsync([Body] UserBodyDTO user);
+
+        [Get("/BookStore/v1/Books")]
+        Task<BookListDTO> GetBookListAsync();
+
+        [Get("/BookStore/v1/Book")]
+        Task<BookListDTO> GetBookByIdAsync([Query] string ISBN);
+
+        [Post("/BookStore/v1/Books")]
+        Task<UserBookResponseDTO> AddBookToCollectionAsync([Body] AddCollectionBooksOfUserDTO request,
+            [Header("Authorization")] string token);
+        
+        [Delete("/BookStore/v1/Book")]
+        Task<DeleteBookResponseDTO> DeleteBookAsync([Body] DeleteBookRequestDTO request,
+            [Header("Authorization")] string token);
     }
 }

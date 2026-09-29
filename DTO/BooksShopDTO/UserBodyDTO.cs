@@ -2,7 +2,7 @@ using System;
 
 namespace AqaTest.DTO.BooksShopDTO;
 
-public record UserCreateBodyDTO
+public record UserBodyDTO
 
 (
     string UserName,
