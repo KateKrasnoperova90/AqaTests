@@ -11,5 +11,6 @@ namespace AqaTest.Interfaces.DapperInterfaces
     
     {
         Task<OrderDTO> GetOrderByUserIdAsync(int userId);
+        Task<IEnumerable<long>> GetUserIdsByCategoryNameAsync(string categoryName);
     }
 }
