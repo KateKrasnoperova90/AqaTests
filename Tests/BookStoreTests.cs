@@ -99,6 +99,25 @@ namespace AqaTest.Tests
             response.Should().NotBeNull();
         }
 
+         [Test]
+
+        public async Task AddBookToCollectionNegative()
+        {
+            var token = await GetTokenAsync();
+            var userId = await GetUserIdAsync();
+            var request = new AddCollectionBooksOfUserDTO
+            (
+                userId,
+                new List<CollectionsOfIsbnsDTO>
+                {
+                    new CollectionsOfIsbnsDTO ("INVALID_ISBN")
+                }
+            );
+            Func<Task> act = async () => await api.AddBookToCollectionAsync(request, token);
+            await act.Should().ThrowAsync<ApiException>().Where(p => p.StatusCode == HttpStatusCode.BadRequest);
+        }
+
+
         [Test]
         public async Task DeleteBook()
         {
@@ -116,7 +135,7 @@ namespace AqaTest.Tests
 
         [Test]
 
-        public async Task AddBookToCollectionNegative()
+        public async Task AddBookToCollectionTokenInvalid()
         {
             var userId = await GetUserIdAsync();
             var listOfBooks = await api.GetBookListAsync();

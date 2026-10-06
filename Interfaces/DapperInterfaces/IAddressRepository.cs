@@ -11,5 +11,8 @@ namespace AqaTest.Interfaces.DapperInterfaces
     
     {
         Task<AddressDTO> GetAddressByUserIdAsync(int userId);
+        Task<IEnumerable<string>> GetCitiesByCategoryNameAsync(string categoryName);
     }
+
+    
 }

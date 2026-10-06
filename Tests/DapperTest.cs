@@ -97,5 +97,29 @@ namespace AqaTest.Tests
             }
             productNames.Should().BeEquivalentTo(new[] { "AirPods Pro 2", "Anker PowerBank" });
         }
+
+        [Test]
+        public async Task Test8AccessoriesBoughtInDifferentCities() // тест, что товары категории Аксессуары покупают пользователи, живущие в разных городах
+        {
+            var repo = p.Provider.GetService<IAddressRepository>();
+            var cities = await repo.GetCitiesByCategoryNameAsync("Аксессуары");
+            cities.Should().NotBeEmpty();
+
+            var uniqueCities = cities.Distinct().ToList();
+
+            uniqueCities.Should().HaveCountGreaterThan(1);
+        }
+
+        [Test]
+        public async Task Test9TvBuyersAlsoBuyAccessories() // тест, что пользователи, купившие товары категории Телевизоры, также купили товары категории Аксессуары
+        {
+            var repo = p.Provider.GetService<IOrderRepository>();
+            var tvBuyers = await repo.GetUserIdsByCategoryNameAsync("Телевизоры");
+            var accessoryBuyers = await repo.GetUserIdsByCategoryNameAsync("Аксессуары");
+            tvBuyers.Should().NotBeEmpty();
+            
+            var both = tvBuyers.Intersect(accessoryBuyers).ToList();
+            both.Should().NotBeEmpty("buyers of TVs should also buy accessories");
+        }
     }
 }
