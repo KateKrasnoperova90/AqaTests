@@ -21,5 +21,20 @@ namespace AqaTest.Tests.UITests
             await first.CheckAsync();
             (await first.IsCheckedAsync()).Should().BeTrue();
         }
-    }
+
+        [Test]
+        public async Task ForAuthentication()
+        {
+            await Page.GotoAsync("https://the-internet.herokuapp.com/login");
+            var userNameTextBox = Page.GetByRole(AriaRole.Textbox, new() { Name = "Username" });
+            await userNameTextBox.FillAsync("wrong");
+            var passwordTextBox = Page.GetByRole(AriaRole.Textbox, new() { Name = "Password" });
+            await passwordTextBox.FillAsync("wrong");
+            var loginButton = Page.GetByRole(AriaRole.Button, new() { Name = "Login" });
+            await loginButton.ClickAsync();
+            var errorMessageLabel = Page.Locator("//div[@id='flash']");
+            var errorMessage = await errorMessageLabel.InnerTextAsync();
+            errorMessage.Should().Contain("Your username is invalid!");
+        }
+    }   
 }
